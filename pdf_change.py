@@ -12,6 +12,8 @@ import os
 
 import docx # pip install python-docx
 from docx import Document
+import msvcrt
+
 
 
 # file_path=os.getcwd()+"/2.pdf"
@@ -84,8 +86,11 @@ if __name__ == '__main__':
     
     choose=input("请选择转换格式，默认为excel直接点击回车\n输入1转换word\n输入2转换为txt\n")
     if not choose:
-        path = input("请将整个文件或者文件夹拖入窗口\n")
+        path=input("请将整个文件或者文件夹拖入窗口\n")
+        if path.startswith("&"):
+            path=path[3:len(path)-1]
         if path.endswith(".pdf"):
+            # "& 'g:\\python\\pdf_change\\微信支付交易明细证明(20210601-20220531).pdf'"
             ######单个文件操作
             file_path = path
             try:
@@ -109,6 +114,8 @@ if __name__ == '__main__':
     elif choose=='1':
         #转换成word格式
         path = input("请将整个文件或者文件夹拖入窗口\n")
+        if path.startswith("&"):
+            path=path[3:len(path)-1]
         if path.endswith(".pdf"):
             ######单个文件操作
             file_path = path
@@ -132,6 +139,8 @@ if __name__ == '__main__':
                 print("操作错误！")
     elif choose=='2':
         path = input("请将整个文件或者文件夹拖入窗口\n")
+        if path.startswith("&"):
+            path=path[3:len(path)-1]
         if path.endswith(".pdf"):
             ######单个文件操作
             file_path = path
@@ -156,4 +165,4 @@ if __name__ == '__main__':
     else:
         print("输入错误")
 
-            
+
